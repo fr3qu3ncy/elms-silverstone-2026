@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELMS at Silverstone 2026 — Race Day Briefing</title>
+<meta property="og:title" content="ELMS at Silverstone 2026 — Race Day Briefing">
+<meta property="og:description" content="Round 5 of the European Le Mans Series. Teams, drivers, standings, season recap and your pre-race podcast.">
+<meta property="og:type" content="website">
+<style>
+:root {
+  --bg: #0d1117; --bg2: #131922; --card: #161b22; --text: #e6edf3;
+  --dim: #8b949e; --accent: #ff5f00; --accent-soft: rgba(255,95,0,.12);
+  --border: #30363d; --gold: #ffd700; --silver: #c0c0c0; --bronze: #cd7f32;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; line-height: 1.55; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+/* NAV */
+nav { position: sticky; top: 0; z-index: 50; background: rgba(13,17,23,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+nav .wrap { display: flex; gap: 18px; align-items: center; padding: 12px 16px; overflow-x: auto; }
+nav .brand { font-weight: 800; font-size: 1.05rem; white-space: nowrap; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a { color: var(--dim); font-size: .95rem; white-space: nowrap; }
+nav a:hover { color: var(--text); text-decoration: none; }
+/* HERO */
+.hero { background: linear-gradient(135deg, #1a0f08 0%, #0d1117 55%), radial-gradient(circle at 80% 20%, rgba(255,95,0,.18), transparent 50%); border-bottom: 1px solid var(--border); padding: 56px 0 44px; }
+.hero .kicker { color: var(--accent); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: .85rem; }
+.hero h1 { font-size: clamp(2rem, 5.5vw, 3.4rem); line-height: 1.12; margin: 10px 0 8px; font-weight: 800; }
+.hero .sub { color: var(--dim); font-size: 1.15rem; max-width: 640px; }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.chip { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: .95rem; }
+.chip b { color: var(--accent); }
+/* COUNTDOWN */
+.countdown { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+.cd-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; text-align: center; min-width: 86px; }
+.cd-box .v { font-size: 2.2rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.cd-box .l { font-size: .7rem; color: var(--dim); text-transform: uppercase; letter-spacing: .1em; }
+.cd-status { font-size: 1.3rem; font-weight: 700; margin-top: 26px; color: var(--gold); }
+/* SECTIONS */
+section { padding: 44px 0; }
+section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+section .lede { color: var(--dim); font-size: 1.05rem; margin-bottom: 24px; max-width: 720px; }
+.section-alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+/* PODCAST */
+.podcast-card { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 14px; padding: 26px; display: flex; gap: 22px; align-items: center; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.podcast-art { width: 110px; height: 110px; border-radius: 12px; background: linear-gradient(135deg, #ff5f00, #7a2a00); display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; }
+.podcast-info { flex: 1; min-width: 240px; }
+.podcast-info h3 { font-size: 1.4rem; margin-bottom: 4px; }
+.podcast-info p { color: var(--dim); font-size: .95rem; }
+audio { width: 100%; margin-top: 14px; }
+.podcast-dl { background: var(--accent); color: #fff; font-weight: 700; padding: 12px 22px; border-radius: 10px; display: inline-block; }
+.podcast-dl:hover { text-decoration: none; filter: brightness(1.1); }
+/* GRID CARDS */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.card .tag { font-size: .75rem; color: var(--dim); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.card h3 { font-size: 1.25rem; margin-bottom: 4px; }
+.card .num { color: var(--accent); font-weight: 800; }
+.card .drivers { color: var(--text); font-size: 1rem; margin: 6px 0; }
+.card .detail { color: var(--dim); font-size: .92rem; }
+.card .pts { font-size: 1.6rem; font-weight: 800; }
+.card .pts small { font-size: .8rem; color: var(--dim); font-weight: 400; }
+.card.leader { border-color: var(--accent); background: linear-gradient(160deg, var(--accent-soft), var(--card) 60%); }
+.card .crown { float: right; font-size: 1.4rem; }
+/* STANDINGS */
+.std-block { margin-bottom: 30px; }
+.std-block h3 { font-size: 1.5rem; margin-bottom: 12px; }
+.std-block h3 .cls { color: var(--accent); }
+table.std { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+table.std th { background: var(--bg2); color: var(--dim); text-align: left; padding: 10px 14px; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+table.std td { padding: 12px 14px; border-top: 1px solid var(--border); font-size: .98rem; }
+table.std tr:hover td { background: rgba(255,255,255,.02); }
+td.pos { font-weight: 800; color: var(--dim); width: 34px; }
+tr.lead td { background: var(--accent-soft); }
+tr.lead td:first-child { color: var(--accent); }
+td.pts { font-weight: 800; font-size: 1.1rem; text-align: right; }
+td .drv { color: var(--text); }
+td .team { color: var(--dim); font-size: .85rem; }
+.rchip { display: inline-block; min-width: 26px; text-align: center; border-radius: 6px; padding: 2px 6px; font-size: .8rem; font-weight: 700; margin: 1px; background: #21262d; }
+.rchip.w { background: var(--gold); color: #111; }
+.rchip.p { background: #3a414d; }
+.rchip.r { background: #3d1f1f; color: #f08080; }
+/* RECAP */
+.timeline { display: grid; gap: 14px; }
+.rnd { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: grid; grid-template-columns: 110px 1fr; gap: 16px; }
+.rnd .head .n { font-size: .8rem; color: var(--dim); text-transform: uppercase; letter-spacing: .1em; }
+.rnd .head .name { font-weight: 800; font-size: 1.15rem; }
+.rnd .head .date { color: var(--dim); font-size: .9rem; }
+.rnd .res { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.res-item .cls { font-size: .72rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+.res-item .who { font-size: .95rem; font-weight: 600; }
+.res-item .drv { color: var(--dim); font-size: .85rem; }
+/* FACTS */
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.fact { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.fact .emoji { font-size: 1.6rem; }
+.fact h4 { margin: 6px 0 4px; font-size: 1.05rem; }
+.fact p { color: var(--dim); font-size: .95rem; }
+/* TIMETABLE */
+.tt { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.tt-row { display: grid; grid-template-columns: 130px 1fr; gap: 14px; padding: 13px 18px; border-top: 1px solid var(--border); align-items: center; }
+.tt-row:first-child { border-top: none; }
+.tt-row .time { font-weight: 800; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.tt-row .ev { font-size: 1rem; }
+.tt-row.race { background: var(--accent-soft); }
+.tt-row.race .ev { font-weight: 700; color: var(--accent); font-size: 1.15rem; }
+.tt-note { color: var(--dim); font-size: .9rem; margin-top: 12px; }
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 30px 0; color: var(--dim); font-size: .9rem; text-align: center; }
+@media (max-width: 640px) {
+  .rnd { grid-template-columns: 1fr; }
+  .podcast-card { padding: 18px; }
+  table.std { font-size: .85rem; }
+  table.std th, table.std td { padding: 8px 8px; }
+}
+</style></head><body>
+<nav><div class="wrap">
+  <span class="brand">ELMS<span>@</span>SIL</span>
+  <a href="#podcast">Podcast</a><a href="#standings">Standings</a><a href="#teams">Teams</a>
+  <a href="#season">Season</a><a href="#facts">Facts</a><a href="#timetable">Timetable</a><a href="#calendar">Calendar</a>
+</div></nav>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Round 5 of 6 · European Le Mans Series</div>
+  <h1>Goodyear 4 Hours<br>of Silverstone</h1>
+  <p class="sub">Sunday 13 September 2026 · 47 cars · four championships still on the line. Your complete pre-race briefing — teams, drivers, standings and the story so far.</p>
+  <div class="meta">
+    <span class="chip">🏁 Race: <b>12:00–16:00</b></span>
+    <span class="chip">📍 <b>Silverstone Circuit</b>, UK</span>
+    <span class="chip">🎧 <b>6-min</b> pre-race podcast</span>
+    <span class="chip">📺 Free on <b>FIA WEC+</b></span>
+  </div>
+  <div class="countdown" id="countdown">
+    <div class="cd-box"><div class="v" id="cd-h">–</div><div class="l">hours</div></div>
+    <div class="cd-box"><div class="v" id="cd-m">–</div><div class="l">min</div></div>
+    <div class="cd-box"><div class="v" id="cd-s">–</div><div class="l">sec</div></div>
+  </div>
+  <div class="cd-status" id="cd-status" style="display:none"></div>
+</div></div>
+
+<section id="podcast"><div class="wrap">
+  <h2>🎧 Pre-Race Briefing Podcast</h2>
+  <p class="lede">Everything you need before lights-out — the series, the teams to watch, the standings and the story of the season. Six minutes, best with the radio on.</p>
+  <div class="podcast-card">
+    <div class="podcast-art">🏁</div>
+    <div class="podcast-info">
+      <h3>ELMS at Silverstone — Race Day Briefing</h3>
+      <p>~6 min · recorded 13 Sep 2026 · piper TTS</p>
+      <audio controls preload="metadata" src="podcast.mp3"></audio>
+    </div>
+    <a class="podcast-dl" href="podcast.mp3" download>⬇ Download MP3</a>
+  </div>
+</div></section>
+
+<section id="standings" class="section-alt"><div class="wrap">
+  <h2>📊 Championship Standings</h2>
+  <p class="lede">After four rounds. All four titles wide open — a podium today could be worth a championship. Per-round finishes shown (BAR, LEC, IMO, SPA).</p>
+  <div class="std-block"><h3><span class="cls">LMP2</span> Championship</h3>
+<table class="std"><thead><tr><th>Pos</th><th>Team / Car</th><th>Drivers</th><th>BAR LEC IMO SPA</th><th>Points</th></tr></thead>
+<tbody><tr class="lead"><td class="pos">1</td>
+<td><span class="drv">Forestier Racing by Panis</span><div class="team">#29 Oreca 07</div></td>
+<td>Oliver Gray · Esteban Masson · Louis Rousset</td><td><span class="rchip w">1</span><span class="rchip r">Ret</span><span class="rchip w">1</span><span class="rchip p">2</span></td><td class="pts">70</td></tr><tr><td class="pos">2</td>
+<td><span class="drv">United Autosports</span><div class="team">#22 Oreca 07</div></td>
+<td>Ben Hanley · Griffin Peebles · Grégoire Saucy</td><td><span class="rchip p">3</span><span class="rchip w">1</span><span class="rchip p">2</span><span class="rchip ">4</span></td><td class="pts">70</td></tr><tr><td class="pos">3</td>
+<td><span class="drv">IDEC Sport</span><div class="team">#18 Oreca 07</div></td>
+<td>Jamie Chadwick · Laurents Hörr · Valerio Rinicella</td><td><span class="rchip ">4</span><span class="rchip ">4</span><span class="rchip ">4</span><span class="rchip p">3</span></td><td class="pts">52</td></tr><tr><td class="pos">4</td>
+<td><span class="drv">Inter Europol Competition</span><div class="team">#43 Oreca 07</div></td>
+<td>Tom Dillmann · Jakub Śmiechowski · Nick Yelloly</td><td><span class="rchip ">5</span><span class="rchip ">7</span><span class="rchip ">10</span><span class="rchip w">1</span></td><td class="pts">42</td></tr><tr><td class="pos">5</td>
+<td><span class="drv">Inter Europol Competition</span><div class="team">#34 Oreca 07</div></td>
+<td>Reshad de Gerus · Bijoy Garg</td><td><span class="rchip p">2</span><span class="rchip p">2</span><span class="rchip ">7</span><span class="rchip ">11</span></td><td class="pts">43</td></tr><tr><td class="pos">6</td>
+<td><span class="drv">Algarve Pro Racing</span><div class="team">#25 Oreca 07</div></td>
+<td>Jake Hughes · Matthias Kaiser · Tristan Vautier</td><td><span class="rchip ">9</span><span class="rchip ">9</span><span class="rchip p">3</span><span class="rchip ">5</span></td><td class="pts">29</td></tr></tbody></table></div>
+  <div class="std-block"><h3><span class="cls">LMP2 PRO/AM</span> Championship</h3>
+<table class="std"><thead><tr><th>Pos</th><th>Team / Car</th><th>Drivers</th><th>BAR LEC IMO SPA</th><th>Points</th></tr></thead>
+<tbody><tr class="lead"><td class="pos">1</td>
+<td><span class="drv">Algarve Pro Racing</span><div class="team">#20 Oreca 07</div></td>
+<td>Malthe Jakobsen · Michael Jensen · Enzo Trulli</td><td><span class="rchip w">1</span><span class="rchip ">11</span><span class="rchip p">2</span><span class="rchip p">2</span></td><td class="pts">61</td></tr><tr><td class="pos">2</td>
+<td><span class="drv">AF Corse</span><div class="team">#83 Oreca 07</div></td>
+<td>François Perrodo · Matthieu Vaxivière · Antonio Fuoco</td><td><span class="rchip p">2</span><span class="rchip ">6</span><span class="rchip ">5</span><span class="rchip w">1</span></td><td class="pts">61</td></tr><tr><td class="pos">3</td>
+<td><span class="drv">Vector Sport</span><div class="team">#7 Oreca 07</div></td>
+<td>Cem Bölükbaşı · Lorenzo Fluxá · Jens Reno Møller</td><td><span class="rchip ">6</span><span class="rchip ">5</span><span class="rchip w">1</span><span class="rchip ">7</span></td><td class="pts">49</td></tr><tr><td class="pos">4</td>
+<td><span class="drv">Duqueine Team</span><div class="team">#30 Oreca 07</div></td>
+<td>Doriane Pin · Giorgio Roda · Richard Verschoor</td><td><span class="rchip p">3</span><span class="rchip p">3</span><span class="rchip ">7</span><span class="rchip ">5</span></td><td class="pts">49</td></tr><tr><td class="pos">5</td>
+<td><span class="drv">AO by TF</span><div class="team">#50 Oreca 07</div></td>
+<td>P.J. Hyett · Louis Delétraz · Dane Cameron</td><td><span class="rchip ">10</span><span class="rchip p">2</span><span class="rchip ">9</span><span class="rchip p">3</span></td><td class="pts">37</td></tr></tbody></table></div>
+  <div class="std-block"><h3><span class="cls">LMP3</span> Championship</h3>
+<table class="std"><thead><tr><th>Pos</th><th>Team / Car</th><th>Drivers</th><th>BAR LEC IMO SPA</th><th>Points</th></tr></thead>
+<tbody><tr class="lead"><td class="pos">1</td>
+<td><span class="drv">CLX Motorsport</span><div class="team">#17 Ligier JS P325</div></td>
+<td>Paul Lanchère · Alexander Jacoby · Louis Iglesias</td><td><span class="rchip ">8</span><span class="rchip ">5</span><span class="rchip w">1</span><span class="rchip w">1</span></td><td class="pts">65</td></tr><tr><td class="pos">2</td>
+<td><span class="drv">R-ace GP</span><div class="team">#85 Duqueine D09</div></td>
+<td>Fabien Michal · Pierre-Alexandre Provost · Hugo Schwarze</td><td><span class="rchip p">2</span><span class="rchip ">6</span><span class="rchip ">8</span><span class="rchip p">2</span></td><td class="pts">50</td></tr><tr><td class="pos">3</td>
+<td><span class="drv">Rinaldi Racing</span><div class="team">#5 Ligier JS P325</div></td>
+<td>José Cautela · Mikkel Gaarde Pedersen · Alvise Rodella</td><td><span class="rchip w">1</span><span class="rchip ">7</span><span class="rchip p">2</span><span class="rchip r">DSQ</span></td><td class="pts">49</td></tr><tr><td class="pos">4</td>
+<td><span class="drv">Inter Europol Competition</span><div class="team">#13 Ligier JS P325</div></td>
+<td>Alexander Bukhantsov · Chun-Ting Chou · Henry Cubides Olarte</td><td><span class="rchip p">3</span><span class="rchip w">1</span><span class="rchip ">10</span><span class="rchip r">Ret</span></td><td class="pts">41</td></tr><tr><td class="pos">5</td>
+<td><span class="drv">EuroInternational</span><div class="team">#11 Ligier JS P325</div></td>
+<td>Matthew Richard Bell · Douwe Dedecker · Max van der Snel</td><td><span class="rchip ">4</span><span class="rchip r">DSQ</span><span class="rchip ">4</span><span class="rchip p">3</span></td><td class="pts">39</td></tr></tbody></table></div>
+  <div class="std-block"><h3><span class="cls">LMGT3</span> Championship</h3>
+<table class="std"><thead><tr><th>Pos</th><th>Team / Car</th><th>Drivers</th><th>BAR LEC IMO SPA</th><th>Points</th></tr></thead>
+<tbody><tr class="lead"><td class="pos">1</td>
+<td><span class="drv">Proton Competition</span><div class="team">#75 Porsche 911 GT3 R</div></td>
+<td>Matt Kurzejewski · Richard Lietz · Tom Sargent</td><td><span class="rchip w">1</span><span class="rchip ">7</span><span class="rchip ">4</span><span class="rchip ">5</span></td><td class="pts">53</td></tr><tr><td class="pos">2</td>
+<td><span class="drv">TF Sport</span><div class="team">#33 Corvette Z06 GT3.R</div></td>
+<td>Charlie Eastwood · Blake McDonald · Alec Udell</td><td><span class="rchip r">Ret</span><span class="rchip p">2</span><span class="rchip w">1</span><span class="rchip ">6</span></td><td class="pts">52</td></tr><tr><td class="pos">3</td>
+<td><span class="drv">Team Qatar by Iron Lynx</span><div class="team">#62 Mercedes-AMG GT3 Evo</div></td>
+<td>Abdulla Al-Khelaifi · Julian Hanses · Maxime Martin</td><td><span class="rchip ">4</span><span class="rchip r">Ret</span><span class="rchip p">2</span><span class="rchip p">3</span></td><td class="pts">47</td></tr><tr><td class="pos">4</td>
+<td><span class="drv">Proton Competition</span><div class="team">#77 Porsche 911 GT3 R</div></td>
+<td>Huub van Eijndhoven · Harry King · Martin Berry</td><td><span class="rchip ">8</span><span class="rchip ">5</span><span class="rchip p">3</span><span class="rchip p">2</span></td><td class="pts">47</td></tr><tr><td class="pos">5</td>
+<td><span class="drv">GR Racing</span><div class="team">#86 Ferrari 296 GT3 Evo</div></td>
+<td>Lorcan Hanafin · Mex Jansen · Michael Wainwright</td><td><span class="rchip r">Ret</span><span class="rchip p">3</span><span class="rchip ">7</span><span class="rchip w">1</span></td><td class="pts">46</td></tr><tr><td class="pos">6</td>
+<td><span class="drv">Kessel Racing</span><div class="team">#57 Ferrari 296 GT3 Evo</div></td>
+<td>Mathys Jaubert · Takeshi Kimura · Daniel Serra</td><td><span class="rchip p">3</span><span class="rchip w">1</span><span class="rchip ">11</span><span class="rchip r">Ret</span></td><td class="pts">40</td></tr></tbody></table></div>
+</div></section>
+
+<section id="teams"><div class="wrap">
+  <h2>🏎️ Teams To Watch Today</h2>
+  <p class="lede">The crews who matter most when the lights go out at 12:00.</p>
+  <div class="grid">
+    <div class="card leader"><span class="crown">👑</span><div class="tag">LMP2 · Championship leaders</div><h3><span class="num">#29</span> Forestier Racing by Panis</h3><div class="drivers">Oliver Gray · Esteban Masson · Louis Rousset</div><div class="detail">Two wins (Barcelona, Imola) and 70 points. Level with United Autosports — wins more on tiebreak. A top-three finish today keeps them in the driver's seat.</div><div class="pts" style="margin-top:8px">70 <small>pts</small></div></div>
+    <div class="card leader"><span class="crown">🎯</span><div class="tag">LMP2 · Pole sitters</div><h3><span class="num">#43</span> Inter Europol Competition</h3><div class="drivers">Tom Dillmann · Jakub Śmiechowski · Nick Yelloly</div><div class="detail">Won at Spa and hold Silverstone pole (1:43.279, season's first). Dillmann has F1 pedigree and knows this track cold. Yelloly races at home.</div><div class="pts" style="margin-top:8px">42 <small>pts · 28 off the lead</small></div></div>
+    <div class="card leader"><span class="crown">🇬🇧</span><div class="tag">LMGT3 · Home champions</div><h3><span class="num">#33</span> TF Sport — Corvette Z06</h3><div class="drivers">Charlie Eastwood · Blake McDonald · Alec Udell</div><div class="detail">Reigning LMGT3 champions, one point behind Proton. Three Brits, a home crowd, and a Corvette that won at Imola. The round they can make it count for most.</div><div class="pts" style="margin-top:8px">52 <small>pts</small></div></div>
+    <div class="card leader"><span class="crown">🔥</span><div class="tag">LMP3 · On a roll</div><h3><span class="num">#17</span> CLX Motorsport</h3><div class="drivers">Paul Lanchère · Alexander Jacoby · Louis Iglesias</div><div class="detail">Back-to-back winners at Imola and Spa, 15 points clear in the championship. A win today stretches the lead before Portimão.</div><div class="pts" style="margin-top:8px">65 <small>pts</small></div></div>
+    <div class="card"><div class="tag">LMP2 · On 70 too</div><h3><span class="num">#22</span> United Autosports</h3><div class="drivers">Ben Hanley · Griffin Peebles · Grégoire Saucy</div><div class="detail">Le Castellet winners, dead level with Forestier. The tiebreak currently favours their rivals — they need to beat them, not just score.</div><div class="pts" style="margin-top:8px">70 <small>pts</small></div></div>
+    <div class="card"><div class="tag">Pro/Am · 0.141s to redemption</div><h3><span class="num">#50</span> AO by TF</h3><div class="drivers">P.J. Hyett · Louis Delétraz · Dane Cameron</div><div class="detail">Reigning champions, 5th on 37. Last year they missed the Silverstone win by 0.141 seconds. Today is the day to settle it.</div><div class="pts" style="margin-top:8px">37 <small>pts</small></div></div>
+    <div class="card"><div class="tag">LMGT3 · On 53</div><h3><span class="num">#75</span> Proton Competition — Porsche</h3><div class="drivers">Matt Kurzejewski · Richard Lietz · Tom Sargent</div><div class="detail">Took the lead back at Spa. The 13-point LMGT3 top-six means this crew can lose the title in a single afternoon.</div><div class="pts" style="margin-top:8px">53 <small>pts</small></div></div>
+    <div class="card"><div class="tag">Pro/Am · Level on 61</div><h3><span class="num">#83</span> AF Corse</h3><div class="drivers">François Perrodo · Matthieu Vaxivière · Antonio Fuoco</div><div class="detail">Spa winners, dead level with Algarve Pro Racing. One podium separates them from the class lead — or one DNF drops them to third.</div><div class="pts" style="margin-top:8px">61 <small>pts</small></div></div>
+  </div>
+</div></section>
+
+<section id="season" class="section-alt"><div class="wrap">
+  <h2>📖 Season So Far</h2>
+  <p class="lede">Four races, four different LMP2 winners. This is how open it is.</p>
+  <div class="timeline"><div class="rnd"><div class="head"><div class="n">Round 1</div><div class="name">Barcelona</div><div class="date">12 Apr</div></div><div class="res"><div class="res-item"><div class="cls">LMP2</div><div class="who">#29 Forestier Racing</div><div class="drv">Gray · Masson · Rousset</div></div><div class="res-item"><div class="cls">Pro/Am</div><div class="who">#20 Algarve Pro Racing</div><div class="drv">Jakobsen · Jensen · Trulli</div></div><div class="res-item"><div class="cls">LMP3</div><div class="who">#5 Rinaldi Racing</div><div class="drv">Cautela · Pedersen · Rodella</div></div><div class="res-item"><div class="cls">LMGT3</div><div class="who">#75 Proton Competition</div><div class="drv">Kurzejewski · Lietz · Sargent</div></div></div></div><div class="rnd"><div class="head"><div class="n">Round 2</div><div class="name">Le Castellet</div><div class="date">3 May</div></div><div class="res"><div class="res-item"><div class="cls">LMP2</div><div class="who">#22 United Autosports</div><div class="drv">Hanley · Peebles · Saucy</div></div><div class="res-item"><div class="cls">Pro/Am</div><div class="who">#27 Nielsen Racing</div><div class="drv">Allen · Lendoudis · Quinn</div></div><div class="res-item"><div class="cls">LMP3</div><div class="who">#13 Inter Europol</div><div class="drv">Bukhantsov · Chou · Cubides</div></div><div class="res-item"><div class="cls">LMGT3</div><div class="who">#57 Kessel Racing</div><div class="drv">Jaubert · Kimura · Serra</div></div></div></div><div class="rnd"><div class="head"><div class="n">Round 3</div><div class="name">Imola</div><div class="date">5 Jul</div></div><div class="res"><div class="res-item"><div class="cls">LMP2</div><div class="who">#29 Forestier Racing</div><div class="drv">Gray · Masson · Rousset</div></div><div class="res-item"><div class="cls">Pro/Am</div><div class="who">#7 Vector Sport</div><div class="drv">Bölükbaşı · Fluxá · Møller</div></div><div class="res-item"><div class="cls">LMP3</div><div class="who">#17 CLX Motorsport</div><div class="drv">Iglesias · Jacoby · Lanchère</div></div><div class="res-item"><div class="cls">LMGT3</div><div class="who">#33 TF Sport</div><div class="drv">Eastwood · McDonald · Udell</div></div></div></div><div class="rnd"><div class="head"><div class="n">Round 4</div><div class="name">Spa-Francorchamps</div><div class="date">23 Aug</div></div><div class="res"><div class="res-item"><div class="cls">LMP2</div><div class="who">#43 Inter Europol</div><div class="drv">Dillmann · Śmiechowski · Yelloly</div></div><div class="res-item"><div class="cls">Pro/Am</div><div class="who">#83 AF Corse</div><div class="drv">Fuoco · Perrodo · Vaxivière</div></div><div class="res-item"><div class="cls">LMP3</div><div class="who">#17 CLX Motorsport</div><div class="drv">Iglesias · Jacoby · Lanchère</div></div><div class="res-item"><div class="cls">LMGT3</div><div class="who">#86 GR Racing</div><div class="drv">Hanafin · Jansen · Wainwright</div></div></div></div></div>
+</div></section>
+
+<section id="facts"><div class="wrap">
+  <h2>💡 Good To Know</h2>
+  <p class="lede">Facts and news for your weekend at the circuit.</p>
+  <div class="facts"><div class="fact"><div class="emoji">🏁</div><h4>Silverstone returns</h4><p>First ELMS round at Silverstone since 2020 — a six-year absence. Goodyear, the tyre supplier, is title sponsor of the round.</p></div><div class="fact"><div class="emoji">🔢</div><h4>47 cars, four classes</h4><p>LMP2, LMP2 Pro/Am, LMP3 and LMGT3. LMGT3 is the biggest class: 14 cars from six constructors.</p></div><div class="fact"><div class="emoji">🏆</div><h4>Le Mans is the prize</h4><p>Each class winner earns an automatic invitation to the 24 Hours of Le Mans. ELMS is the biggest feeder to the 24h.</p></div><div class="fact"><div class="emoji">⚡</div><h4>Tightest race in years</h4><p>With two rounds to go, all four championships are undecided. In LMGT3, only 13 points separate the top six crews.</p></div><div class="fact"><div class="emoji">🎯</div><h4>Dillmann's pole</h4><p>Tom Dillmann (#43) took the season's first pole for Inter Europol at 1:43.279. The Frenchman has deep F1 pedigree and knows every corner of Silverstone.</p></div><div class="fact"><div class="emoji">🇬🇧</div><h4>Home advantage</h4><p>Nick Yelloly (Inter Europol, LMP2) races on home soil. Last year his car finished second here. And TF Sport's Corvette is defended by British champions Eastwood, McDonald & Udell.</p></div><div class="fact"><div class="emoji">📐</div><h4>How it works</h4><p>Four-hour races, single tyre brand per class, and Le Mans-style driving substitutions. Points: 25/18/15/12/10/8/6/4/2/1 for the top ten, plus 1 for pole.</p></div><div class="fact"><div class="emoji">🏎️</div><h4>Same spec, pure skill</h4><p>LMP2 is a spec class — every car is an Oreca 07 with a Gibson V8, on Goodyears. That means the drivers and teams decide everything.</p></div><div class="fact"><div class="emoji">📰</div><h4>WEC news</h4><p>Robert Shwartzman (ex-F2 champion) has signed as a factory driver for Team Peugeot TotalEnergies in the 2027 FIA WEC, in the new Peugeot 9X8.</p></div><div class="fact"><div class="emoji">🎧</div><h4>Watch free</h4><p>All ELMS races are free to watch live on FIA WEC+, with replays and season highlights. Support acts: Michelin Le Mans Cup, Ligier European Series, Eurocup-3.</p></div><div class="fact"><div class="emoji">⏱️</div><h4>0.141 seconds</h4><p>Last year at Silverstone, reigning Pro/Am champions AO by TF (Hyett, Delétraz, Cameron) missed victory by just 0.141 seconds. They're 5th in the class now — hungry.</p></div><div class="fact"><div class="emoji">📅</div><h4>One more to go</h4><p>After today: Portimão, 10 October. A win today puts any championship leader a huge distance clear for the season decider.</p></div></div>
+</div></section>
+
+<section id="timetable" class="section-alt"><div class="wrap">
+  <h2>🕛 Your Sunday</h2>
+  <p class="lede">Race-day timetable at Silverstone (all times local).</p>
+  <div class="tt"><div class="tt-row"><div class="time">09:00–09:35</div><div class="ev">Eurocup 3 — Race 2</div></div><div class="tt-row"><div class="time">09:45</div><div class="ev">ELMS Autograph Session</div></div><div class="tt-row"><div class="time">09:45–10:30</div><div class="ev">ELMS Pit Walk</div></div><div class="tt-row"><div class="time">11:00–11:40</div><div class="ev">ELMS Grid Walk</div></div><div class="tt-row race"><div class="time">12:00–16:00</div><div class="ev">ELMS — Goodyear 4 Hours of Silverstone 🏁</div></div></div>
+  <p class="tt-note">Support acts also run: Eurocup 3 (single-seater), Ligier European Series, Michelin Le Mans Cup. Timetable subject to change — check the official Silverstone app.</p>
+</div></section>
+
+<section id="calendar"><div class="wrap">
+  <h2>📅 2026 Calendar</h2>
+  <p class="lede">Six rounds from Barcelona to Portimão. Two to go.</p>
+  <div class="grid"><div class="card" ><div class="tag">Prologue</div><h3>Circuit de Barcelona-Catalunya</h3><div class="detail">6–7 Apr · Pre-season test</div></div><div class="card" ><div class="tag">Round 1 <span style="color:var(--dim)">✓ raced</span></div><h3>4 Hours of Barcelona</h3><div class="detail">12 Apr · Circuit de Barcelona-Catalunya</div></div><div class="card" ><div class="tag">Round 2 <span style="color:var(--dim)">✓ raced</span></div><h3>4 Hours of Le Castellet</h3><div class="detail">3 May · Circuit Paul Ricard</div></div><div class="card" ><div class="tag">Round 3 <span style="color:var(--dim)">✓ raced</span></div><h3>4 Hours of Imola</h3><div class="detail">5 Jul · Imola Circuit</div></div><div class="card" ><div class="tag">Round 4 <span style="color:var(--dim)">✓ raced</span></div><h3>4 Hours of Spa-Francorchamps</h3><div class="detail">23 Aug · Circuit de Spa-Francorchamps</div></div><div class="card"  style="border-color:var(--accent);background:var(--accent-soft)"><div class="tag">Round 5 <b style="color:var(--accent)">◀ TODAY</b></div><h3>Goodyear 4 Hours of Silverstone</h3><div class="detail">13 Sep — TODAY · Silverstone Circuit</div></div><div class="card" ><div class="tag">Round 6 <span style="color:var(--dim)">next up</span></div><h3>4 Hours of Portimão</h3><div class="detail">10 Oct · Algarve International Circuit</div></div></div>
+</div></section>
+
+<footer><div class="wrap">
+  ELMS at Silverstone 2026 · Race-day briefing built by Henry · Data: Wikipedia (2026 ELMS), 24h-lemans.com, Silverstone.co.uk · 13 Sep 2026<br>
+  Standings after Round 4 (Spa). Points: 25/18/15/12/10/8/6/4/2/1 + 1 for pole.
+</div></footer>
+<script>
+(function(){
+  function tick(){
+    // Race day: Sunday 13 Sep 2026, 12:00 local (BST) to 16:00 local
+    var now = new Date();
+    var start = new Date(2026, 8, 13, 12, 0, 0);
+    var end = new Date(2026, 8, 13, 16, 0, 0);
+    var cd = document.getElementById('countdown');
+    var st = document.getElementById('cd-status');
+    if (!cd) return;
+    if (now < start) {
+      st.style.display = 'none';
+      cd.style.display = 'flex';
+      var d = start - now;
+      var h = Math.floor(d/3600000), m = Math.floor(d%3600000/60000), s = Math.floor(d%60000/1000);
+      var g = function(id,v){ var e=document.getElementById(id); if(e) e.textContent = String(v).padStart(2,'0'); };
+      g('cd-h', h); g('cd-m', m); g('cd-s', s);
+    } else if (now < end) {
+      cd.style.display = 'none';
+      st.style.display = 'block';
+      st.textContent = '🏁 RACE IN PROGRESS — lights out at 12:00';
+    } else {
+      cd.style.display = 'none';
+      st.style.display = 'block';
+      st.textContent = '🏁 Race complete — goodyear 4 hours finished at 16:00';
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+</body></html>
